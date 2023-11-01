@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+    </style>
+    <title>URL Shortener</title>
+</head>
+<body>
+    <h1>URL SHORTENER</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="user_input">Enter URL:</label>
+        <input type="url" name="user_input" id="user_input" required>
+        <input type="submit" value="Shorten">
+    </form>
+    {% if short_url %}
+        {% if check %}
+            <p style="color:red; font-weight: bold;">Shortened URL already exists - <a href="{{short_url}}" target="_blank">{{short_url}}</a></p>
+        {% else %}
+            <p style="color:green; font-weight: bold;">Shortened URL: <a href="{{short_url}}" target="_blank">{{short_url}}</a></p>
+        {% endif %}
+    {% endif %}
+    <p><a href="display" target="_blank">Click here to see all URLs</a></p>
+    <p style="font-weight: bold;"> BY Yuval Goyal, 22075097</p>
+</body>
+</html>
